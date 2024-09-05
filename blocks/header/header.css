@@ -142,7 +142,7 @@ header .nav-brand {
     width: 100%;
     content: '';
     position: absolute;
-    left: 20%;
+    left: 50%;
     bottom: -4px;
     border-bottom: 4px solid var(--yellow);
     z-index: 0;
