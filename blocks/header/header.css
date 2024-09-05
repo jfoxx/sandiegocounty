@@ -1,23 +1,16 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--dark-gray);
+  color: white;
   width: 100%;
   z-index: 2;
-  position: fixed;
 }
 
 header nav {
   box-sizing: border-box;
-  display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
-  align-items: center;
-  gap: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
   margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
   font-family: var(--body-font-family);
 }
 
@@ -34,9 +27,6 @@ header nav[aria-expanded='true'] {
   header nav {
     display: flex;
     justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
   }
 
   header nav[aria-expanded='true'] {
@@ -138,39 +128,86 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
+  flex-basis: 100%;
+  font-weight: 400;
   line-height: 1;
-}
+  font-size: 36px;
+  border-bottom: 4px solid var(--light-blue);
+  position: relative;
+  padding-top: 5px;
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  &::after {
+    display: block;
+    height: 49px;
+    width: 100%;
+    content: '';
+    position: absolute;
+    left: 20%;
+    bottom: -4px;
+    border-bottom: 4px solid var(--yellow);
+    z-index: 0;
+  }
+
+  &::before {
+    display: block;
+    height: 49px;
+    width: 100%;
+    background-image: url('../../img/terrain.png');
+    background-repeat: no-repeat;
+    content: '';
+    position: absolute;
+    left: 22%;
+    bottom: -4px;
+    z-index: 1;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: auto;
+  }
+
+  em {
+    font-style: normal;
+    color: var(--light-gray);
+  }
+
+  img {
+    width: 59px;
+    margin-right: 20px;
+    height: auto;
+  }
+
 }
 
 /* sections */
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
 
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
+header nav .nav-sections {
+  width: 100%;
 }
 
 header nav .nav-sections ul {
   list-style: none;
-  padding-left: 0;
   font-size: var(--body-font-size-s);
+  padding: 5px 0;
+  max-width: var(--max-width);
+  margin: auto;
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 100;
+  text-transform: uppercase;
+
+  &:first-of-type {
+    a {
+      background-color: white;
+      mask-image: url("data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20576%20512%22%3E%3Cpath%20d%3D%22M575.8%20255.5c0%2018-15%2032.1-32%2032.1l-32%200%20.7%20160.2c0%202.7-.2%205.4-.5%208.1l0%2016.2c0%2022.1-17.9%2040-40%2040l-16%200c-1.1%200-2.2%200-3.3-.1c-1.4%20.1-2.8%20.1-4.2%20.1L416%20512l-24%200c-22.1%200-40-17.9-40-40l0-24%200-64c0-17.7-14.3-32-32-32l-64%200c-17.7%200-32%2014.3-32%2032l0%2064%200%2024c0%2022.1-17.9%2040-40%2040l-24%200-31.9%200c-1.5%200-3-.1-4.5-.2c-1.2%20.1-2.4%20.2-3.6%20.2l-16%200c-22.1%200-40-17.9-40-40l0-112c0-.9%200-1.9%20.1-2.8l0-69.7-32%200c-18%200-32-14-32-32.1c0-9%203-17%2010-24L266.4%208c7-7%2015-8%2022-8s15%202%2021%207L564.8%20231.5c8%207%2012%2015%2011%2024z%22%2F%3E%3C%2Fsvg%3E");
+      mask-size: contain;
+      mask-position: center;
+      mask-repeat: no-repeat;
+    }
+  }
 }
 
 header nav .nav-sections ul > li > ul {
@@ -221,7 +258,6 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections ul {
     display: flex;
     gap: 24px;
-    margin: 0;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
@@ -264,5 +300,8 @@ header nav .nav-sections ul > li > ul > li {
 
 /* tools */
 header nav .nav-tools {
-  grid-area: tools;
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  padding: 5px 0;
 }
