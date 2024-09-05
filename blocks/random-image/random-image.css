@@ -1,0 +1,9 @@
+.random-image {
+    &.hero {
+        margin-bottom: 40px;
+
+        img {
+            box-shadow:  5px 5px 7px rgba(185 194 189/90%);
+        }
+    }
+}
