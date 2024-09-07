@@ -2,8 +2,6 @@ export default function decorate(block) {
   const form = document.createElement('form');
   form.setAttribute('action', '/search'); // Set action URL
   form.setAttribute('method', 'GET'); // Set form method
-  
-  // Create a text input for search query
   const searchInput = document.createElement('input');
   searchInput.setAttribute('type', 'text');
   searchInput.setAttribute('name', 'query');

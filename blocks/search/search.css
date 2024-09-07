@@ -1,8 +1,8 @@
 .search {
-
     form {
         display: flex;
         justify-content: end;
+
         input[type='text'] {
             border-top-left-radius: .6rem;
             border-bottom-left-radius: .6rem;
@@ -12,6 +12,7 @@
             height: 35px;
             padding-left: 10px;
         }
+        
         button {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
