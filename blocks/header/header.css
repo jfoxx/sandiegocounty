@@ -138,9 +138,10 @@ header .nav-pre {
   display: flex;
   justify-content: space-between;
   color: var(--dark-gray);
+  padding-left: calc( (100% - var(--max-width))/2);
+  padding-right: calc( (100% - var(--max-width))/2);
 
   .default-content-wrapper {
-    max-width: var(--max-width);
     margin: auto;
     width: 100%;
     padding: 15px 0;
