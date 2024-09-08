@@ -1,5 +1,6 @@
-.query-list-wrapper {
 
+/* stylelint-disable no-descending-specificity, selector-class-pattern */
+.query-list-wrapper {
     .query-list {
         ul#list {
             display: flex;
@@ -18,11 +19,10 @@
                 justify-content: space-between;
                 min-height: 100%;
                 overflow: hidden;
-                opacity: 50%;
+                opacity: 0.5;
                 position: relative;
                 padding-bottom: 15px;
                 transition: transform 1s ease;
-
                 color: white;
 
                 img {
@@ -58,43 +58,38 @@
             }
 
             &.panel-1 {
-
-                
-
                 li:nth-child(-n+3) {
-                    opacity: 100%;
+                    opacity: 1;
                 }
             }
 
             &.panel-2 {
-
                 li {
                     transform: translateX(-330%);
                 }
 
                 li:nth-child(n+4):nth-child(-n+6) {
-                    opacity: 100%;
+                    opacity: 1;
                 }
             }
 
             &.panel-3 {
-
                 li {
                     transform: translateX(-660%);
                 }
 
                 li:nth-child(n+7):nth-child(-n+9) {
-                    opacity: 100%;
+                    opacity: 1;
                 }
             }
+            
             &.panel-4 {
-
                 li {
                     transform: translateX(-990%);
                 }
 
                 li:nth-child(n+10):nth-child(-n+12) {
-                    opacity: 100%;
+                    opacity: 1;
                 }
             }
         }
@@ -108,7 +103,6 @@
             justify-content: end;
 
             li {
-
                 button {
                     margin-right: 20px;
                     width: 50px;
@@ -137,7 +131,7 @@
 
                     &:disabled {
                         border-color: var(--dark-gray);
-                        opacity: 40%;
+                        opacity: 0.4;
 
                         &::before {
                             background-color: var(--dark-gray);
@@ -158,7 +152,6 @@
                 &.prevButton {
                     button {
                         &::before{
-                           
                             left: 13px;
                             mask-image: url("data:image/svg+xml, %3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20320%20512%22%3E%3Cpath%20d%3D%22M41.4%20233.4c-12.5%2012.5-12.5%2032.8%200%2045.3l160%20160c12.5%2012.5%2032.8%2012.5%2045.3%200s12.5-32.8%200-45.3L109.3%20256%20246.6%20118.6c12.5-12.5%2012.5-32.8%200-45.3s-32.8-12.5-45.3%200l-160%20160z%22%2F%3E%3C%2Fsvg%3E");
                         }
