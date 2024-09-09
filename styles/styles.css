@@ -21,6 +21,7 @@
   --dark-gray: #58585b;
   --darker-gray: #242427;
   --dark-blue: #1562A1;
+  --darker-blue: #002b4c;
   --light-gray: #f5f5f7;
   --light-blue: #00B0F0;
   --yellow:     #FDBA16; 
@@ -255,8 +256,12 @@ main > .section {
   }
 
   &.dark {
-    background-color: #012d4f;
+    background-color: #01345d;
     color: white;
+
+    h3 {
+      color: var(--yellow);
+    }
   }
 
   &.darker {

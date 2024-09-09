@@ -25,3 +25,54 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards {
+  &.compact {
+    > ul {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        border: none;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 200px;
+
+        .cards-card-image {
+          img {
+            aspect-ratio: 3/4;
+            min-height: 100%;
+          }
+        }
+
+        .cards-card-body {
+          background-color: var(--darker-blue);
+          padding: 20px 0 0;
+          margin: 0;
+          width: 70%;
+
+          h3 {
+            color: var(--light-blue);
+            margin: 0;
+            padding: 0 20px;
+            line-height: 1;
+            font-family: var(--body-font-family);
+            font-size: var(--heading-font-size-l);
+          }
+
+          h4 {
+            color: var(--yellow);
+            margin: 0;
+            padding: 0 20px;
+            font-family: var(--body-font-family);
+            font-size: var(--body-font-size-xl);
+          }
+        }
+      }
+    }
+
+  }
+}
