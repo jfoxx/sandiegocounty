@@ -5,14 +5,18 @@ import {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateBlock,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForFirstImage,
+  loadBlock,
   loadSection,
   loadSections,
   loadCSS,
   sampleRUM,
+  getMetadata,
 } from './aem.js';
+import ffetch from './ffetch.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -27,6 +31,58 @@ function buildHeroBlock(main) {
     section.append(buildBlock('hero', { elems: [picture, h1] }));
     main.prepend(section);
   }
+}
+
+async function loadSubNav(header) {
+  const sectionNav = buildBlock('subnav', '');
+  header.append(sectionNav);
+  decorateBlock(sectionNav);
+  return loadBlock(sectionNav);
+}
+
+async function latestNewsBlock(aside) {
+  const div = document.createElement('div');
+  div.className = 'latest-news';
+  const title = document.createElement('h3');
+  title.innerText = 'Latest News';
+  const list = document.createElement('ul');
+  const allentries = await ffetch('/query-index.json').all();
+  function filterItems(arr, query) {
+    return arr.filter((el) => el.template.includes(query));
+  }
+  const match = filterItems(allentries, 'News');
+  match.forEach((i) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = i.path;
+    a.innerText = i.title;
+    li.append(a);
+    list.append(li);
+  });
+  div.append(title, list);
+  aside.append(div);
+}
+
+function newsTemplate(main) {
+  const titleBar = document.createElement('div');
+  titleBar.className = 'article-header';
+  const category = document.createElement('span');
+  category.className = 'category';
+  category.innerText = getMetadata('category');
+  const date = document.createElement('span');
+  date.className = 'pubdate';
+  date.innerText = getMetadata('pubdate');
+  const title = document.querySelector('h1');
+  titleBar.append(category, date, title);
+
+  const mainContent = document.createElement('div');
+  mainContent.className = 'main-content';
+  mainContent.innerHTML = main.innerHTML;
+  const aside = document.createElement('aside');
+  aside.className = 'secondary-content';
+
+  main.textContent = '';
+  main.append(titleBar, mainContent, aside);
 }
 
 /**
@@ -76,8 +132,12 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+  const template = getMetadata('template');
   if (main) {
     decorateMain(main);
+    if (template === 'News') {
+      newsTemplate(main);
+    }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
@@ -106,11 +166,23 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadHeader(doc.querySelector('header'));
+  const header = doc.querySelector('header');
+
+  loadHeader(header);
   loadFooter(doc.querySelector('footer'));
+
+  const template = getMetadata('template');
+  if (template) {
+    loadSubNav(header);
+  }
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  if (template === 'News') {
+    const aside = document.querySelector('aside');
+    latestNewsBlock(aside);
+  }
 }
 
 /**

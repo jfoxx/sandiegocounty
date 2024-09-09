@@ -43,7 +43,7 @@
 
   /* nav height */
   --nav-height: 147px;
-  --max-width: 1124px;
+  --max-width: 1324px;
 }
 
 /* fallback fonts */
@@ -94,6 +94,10 @@ header {
   height: var(--nav-height);
   position: relative;
   z-index: 200;
+
+  &.subnav-wrapper {
+    height: calc(var(--nav-height) + 50px);
+  }
 }
 
 header .header,
@@ -273,5 +277,87 @@ main > .section:first-of-type {
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
+  }
+}
+
+
+/*  Templates */
+
+body.news {
+  main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .article-header {
+    width: 100%;
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(to right, #001c3a 0%, var(--dark-blue) 100%);
+    color: white;
+    padding: 30px calc((100% - var(--max-width))/2) ;
+    margin: 0 0 40px;
+
+    .category {
+      display: inline-block;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      text-transform: uppercase;
+      padding: 5px 15px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    .pubdate {
+      display: block;
+      margin: 20px 0;
+      font-size: var(--heading-font-size-s);
+    }
+
+  }
+
+  .main-content {
+    width: calc( 70% - 30px - calc((100% - var(--max-width))/2));
+    padding-left: calc((100% - var(--max-width))/2);
+    padding-right: 30px;
+    margin: 0;
+
+    img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+  }
+
+  .secondary-content {
+    width: calc(30% - calc((100% - var(--max-width))/2));
+    min-height: 100px;
+    padding-right: calc((100% - var(--max-width))/2);
+    margin: 0;
+
+    .latest-news {
+      background-color: var(--light-gray);
+      width: 100%;
+
+      h3 {
+        font-weight: 400;
+        font-size: var(--heading-font-size-s);
+        padding: 30px 15px 0;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0 15px;
+
+        li {
+          margin-bottom: 12px;
+
+          &:nth-child(n+6){
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
