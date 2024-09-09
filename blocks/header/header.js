@@ -103,6 +103,18 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function setActive() {
+  const curSection = window.location.pathname.split('/')[1];
+  const navLinks = document.querySelectorAll('.nav-sections ul li');
+  navLinks.forEach((i) => {
+    const link = i.querySelector('a');
+    const section = link.href.split('/')[3];
+    if (section === curSection) {
+      i.className = 'active';
+    }
+  });
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -162,4 +174,5 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+  setActive();
 }

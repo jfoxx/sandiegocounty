@@ -33,6 +33,16 @@ function buildHeroBlock(main) {
   }
 }
 
+function buildSectionHeader(main) {
+  const h1 = main.querySelector('h1');
+  if (h1) {
+    const section = document.createElement('div');
+    section.className = 'section-header';
+    section.append(h1);
+    main.prepend(section);
+  }
+}
+
 async function loadSubNav(header) {
   const sectionNav = buildBlock('subnav', '');
   header.append(sectionNav);
@@ -138,6 +148,9 @@ async function loadEager(doc) {
     if (template === 'News') {
       newsTemplate(main);
     }
+    if (template === 'landing') {
+      buildSectionHeader(main);
+    }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }
@@ -172,14 +185,12 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   const template = getMetadata('template');
-  if (template) {
-    loadSubNav(header);
-  }
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 
   if (template === 'News') {
+    loadSubNav(header);
     const aside = document.querySelector('aside');
     latestNewsBlock(aside);
   }
