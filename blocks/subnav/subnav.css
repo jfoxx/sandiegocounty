@@ -1,0 +1,28 @@
+.subnav {
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+    padding: 10px 0;
+    
+    nav#subnav {
+        ul {
+            display: flex;
+            color: white;
+            list-style: none;
+            justify-content: start;
+            margin: 0 auto;
+            width: var(--max-width);
+
+            li {
+                margin-right: 20px;
+                font-size: var(--body-font-size-l);
+                font-weight: 500;
+                
+                ul {
+                    display: none;
+                }
+            }
+        }
+    }
+}
