@@ -201,6 +201,10 @@ header nav .nav-sections ul > li {
     cursor: pointer;
   }
 
+  &.active {
+    border-bottom: 2px solid var(--dark-blue);
+  }
+
   a {
     color: var(--dark-gray);
     text-decoration: none;
