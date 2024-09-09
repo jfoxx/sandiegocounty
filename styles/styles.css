@@ -367,3 +367,17 @@ body.news {
     }
   }
 }
+
+body.landing {
+  .section-header {
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(to right, #001c3a 0%, var(--dark-blue) 100%);
+    margin: 0;
+    padding: 0;
+    color: white;
+
+    h1 {
+      padding: 30px calc((100% - var(--max-width))/2);
+    }
+  }
+}
