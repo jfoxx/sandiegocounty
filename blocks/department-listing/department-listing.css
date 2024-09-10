@@ -11,6 +11,15 @@
             font-size: var(--heading-font-size-l);
         }
 
+        &.listing {
+            display: none;
+        }
+
+        &.matched {
+            display: table-row;
+        }
+
+
         &.department-listing-search{
             border: none;
             display: block;
@@ -41,7 +50,7 @@
                
             }
         }
-        
+
         >div {
             display: table-cell;
 
@@ -53,10 +62,6 @@
             &:first-of-type {
                 width: 60%;
                 padding-right: 40px;
-            }
-
-            &:last-of-type {
-                display: none;
             }
         }
     }
