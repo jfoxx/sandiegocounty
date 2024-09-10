@@ -1,5 +1,7 @@
 {
-    "project": "socalsample",
+    "owner": "jcfabbri",
+    "repo": "socalsample",
+    "project": "San Diego County",
     "plugins": [
       {
         "id": "library",
