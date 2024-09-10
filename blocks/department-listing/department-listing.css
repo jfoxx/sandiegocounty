@@ -63,10 +63,6 @@
                 width: 60%;
                 padding-right: 40px;
             }
-
-            &:last-of-type {
-                display: none;
-            }
         }
     }
 }
