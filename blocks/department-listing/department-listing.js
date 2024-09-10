@@ -1,4 +1,23 @@
+
+function filterSearch() {
+    const items = [...document.querySelectorAll('.department-listing > div.listing')];
+    const term = document.getElementById('department-listing-search-field').value.toLowerCase();
+    const matched = items.filter(item => item.innerText.toLowerCase().includes(term));
+    console.log(matched);
+    const cleanup = document.querySelectorAll('.matched');
+    cleanup.forEach((c) => {
+        c.classList.remove('matched');
+    })
+    matched.forEach((i) => {
+        i.classList.add('matched');
+    })
+}
+
 export default function decorate(block) {
+  const items = block.querySelectorAll('.department-listing > div');
+  items.forEach((a) => {
+    a.classList.add('listing', 'matched');
+  })
   const search = document.createElement('div');
   search.className = 'department-listing-search';
   const searchField = document.createElement('input');
@@ -19,4 +38,8 @@ export default function decorate(block) {
   buttons.forEach((i) => {
     i.classList.remove('button');
   });
+
+  document.getElementById('department-listing-search-field').addEventListener('keyup', (event) => {
+    filterSearch();
+  })
 }

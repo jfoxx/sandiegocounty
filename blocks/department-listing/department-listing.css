@@ -11,6 +11,15 @@
             font-size: var(--heading-font-size-l);
         }
 
+        &.listing {
+            display: none;
+        }
+
+        &.matched {
+            display: table-row;
+        }
+
+
         &.department-listing-search{
             border: none;
             display: block;
@@ -41,7 +50,7 @@
                
             }
         }
-        
+
         >div {
             display: table-cell;
 
