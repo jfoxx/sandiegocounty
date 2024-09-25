@@ -12,9 +12,7 @@ function runCarousel(block) {
   carousel.classList.add('panel-1');
   const panels = Math.round(carousel.children.length / 3);
   const nextButton = block.querySelector('.nextButton button');
-  nextButton.setAttribute('aria-label', 'Next');
   const prevButton = block.querySelector('.prevButton button');
-  prevButton.setAttribute('aira-label', 'Previous')
   nextButton.addEventListener('click', function () {
     let currPanel = Number(carousel.className.replace('panel-', ''));
     currPanel += 1;
@@ -47,7 +45,9 @@ function setCarousel(block) {
   const nextButton = document.createElement('li');
   const prevButton = document.createElement('li');
   nextButton.className = 'nextButton';
+  nextButton.setAttribute('aria-label', 'Next');
   prevButton.className = 'prevButton';
+  prevButton.setAttribute('aria-label', 'Previous');
   const btnNext = document.createElement('button');
   const btnPrev = document.createElement('button');
   btnPrev.setAttribute('disabled', 'disabled');
