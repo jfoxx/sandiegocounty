@@ -12,7 +12,9 @@ function runCarousel(block) {
   carousel.classList.add('panel-1');
   const panels = Math.round(carousel.children.length / 3);
   const nextButton = block.querySelector('.nextButton button');
+  nextButton.setAttribute('aria-label', 'Next');
   const prevButton = block.querySelector('.prevButton button');
+  prevButton.setAttribute('aira-label', 'Previous')
   nextButton.addEventListener('click', function () {
     let currPanel = Number(carousel.className.replace('panel-', ''));
     currPanel += 1;
@@ -69,6 +71,7 @@ export default function decorate(block) {
     a.href = i.path;
     const img = document.createElement('img');
     img.src = i.image;
+    img.alt = '';
     if (img) a.append(img);
     const title = document.createElement('p');
     title.innerText = i.title;
