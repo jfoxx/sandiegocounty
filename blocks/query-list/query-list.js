@@ -47,7 +47,9 @@ function setCarousel(block) {
   nextButton.className = 'nextButton';
   prevButton.className = 'prevButton';
   const btnNext = document.createElement('button');
+  btnNext.setAttribute('aria-label', 'Next');
   const btnPrev = document.createElement('button');
+  btnPrev.setAttribute('aria-label', 'Previous');
   btnPrev.setAttribute('disabled', 'disabled');
   nextButton.append(btnNext);
   prevButton.append(btnPrev);
@@ -69,6 +71,7 @@ export default function decorate(block) {
     a.href = i.path;
     const img = document.createElement('img');
     img.src = i.image;
+    img.alt = '';
     if (img) a.append(img);
     const title = document.createElement('p');
     title.innerText = i.title;

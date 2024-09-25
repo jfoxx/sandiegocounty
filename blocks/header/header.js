@@ -139,6 +139,7 @@ export default async function decorate(block) {
 
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = document.createElement('a');
+  brandLink.title = 'Home';
   brandLink.href = window.location.origin;
   brandLink.innerHTML = navBrand.innerHTML;
   navBrand.innerText = '';
