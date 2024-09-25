@@ -45,11 +45,11 @@ function setCarousel(block) {
   const nextButton = document.createElement('li');
   const prevButton = document.createElement('li');
   nextButton.className = 'nextButton';
-  nextButton.setAttribute('aria-label', 'Next');
   prevButton.className = 'prevButton';
-  prevButton.setAttribute('aria-label', 'Previous');
   const btnNext = document.createElement('button');
+  btnNext.setAttribute('aria-label', 'Next');
   const btnPrev = document.createElement('button');
+  btnPrev.setAttribute('aria-label', 'Previous');
   btnPrev.setAttribute('disabled', 'disabled');
   nextButton.append(btnNext);
   prevButton.append(btnPrev);
